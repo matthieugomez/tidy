@@ -28,6 +28,11 @@ From long to wide
 ```
 spread variable value
 ```
+```R
+#> id  a   b
+#> 0	1	3
+#> 1	6	2
+```
 
 
 Optionally, you can specify other names for the variables "variable" and "value" 
