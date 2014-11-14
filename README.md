@@ -41,7 +41,7 @@ An implementation of the tidyr functions gather and spread in Stata
 	#> 1	6	2
 	```
 
-- gather and spread also handle variable labels
+- gather and spread handle variable labels
 
 
 	```R
