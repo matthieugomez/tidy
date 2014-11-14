@@ -7,7 +7,7 @@ An implementation of the tidyr functions gather and spread in Stata
 
 - gather is similar to reshape long
 	```R
-	#> id  a   b
+	#> id   a   b
 	#> 0	1	3
 	#> 1	6	2
 	```
