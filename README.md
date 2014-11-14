@@ -1,7 +1,7 @@
-tidy-stata
+stata-tidy
 ===========
 
-An implementation of the tidyr functions gather and spread in Stata
+An implementation of the [tidyr](https://github.com/hadley/tidyr) functions gather and spread in Stata
 
 
 
