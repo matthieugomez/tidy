@@ -18,7 +18,7 @@ foreach v of varlist `varlist'{
 	rename `v' v_____`i'
 }
 
-cap reshape long v_, i(`ivar') j(`variable') string
+cap reshape long v_____, i(`ivar') j(`variable') string
 if _rc~=0{
 	local i = 0
 	foreach v of varlist `varlist'{

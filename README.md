@@ -45,16 +45,6 @@ An implementation of the tidyr functions gather and spread in Stata
 
 
 	```R
-	#> id variable        label  value
-	#> 0         a "units in $"      1
-	#> 0         b "units in %"      3
-	#> 1		 a "units in $"      6
-	#> 1         a "units in %"      2
-	```
-	```
-	spread variable value, label(label)
-	```
-	```R
 	#> id variable value
 	#> 0         a     1
 	#> 0         b     3
@@ -79,6 +69,9 @@ An implementation of the tidyr functions gather and spread in Stata
 	#> 0         b "units in %"      3
 	#> 1		 a "units in $"      6
 	#> 1         a "units in %"      2
+	```
+	```
+	spread variable value, label(label)
 	```
 
 
