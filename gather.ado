@@ -15,7 +15,7 @@ local names ""
 foreach v of varlist `varlist'{
 	local i = `i'+1
 	local l`i' : variable label `v'
-	rename `v' v_`i'
+	rename `v' v_____`i'
 }
 
 cap reshape long v_, i(`ivar') j(`variable') string
@@ -23,7 +23,7 @@ if _rc~=0{
 	local i = 0
 	foreach v of varlist `varlist'{
 		local i = `i'+1
-		rename v_`i' `v'
+		rename v_____`i' `v'
 	}
 }
 else{
