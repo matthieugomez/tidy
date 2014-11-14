@@ -29,6 +29,8 @@ gather a b
 Optionally, you can specify other names for the variables "variable" and "value" 
 ```
 gather a b, variable("key"), value("count")
+```
+```R
 #> id 	   key count
 #> 0         a     1
 #> 0         b     3
