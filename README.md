@@ -25,9 +25,17 @@ From wide to long
 ```
 gather a b
 ```
+
+Optionally, you can specify other names for the variables "variable" and "value" 
+```
+gather a b, variable("key"), value("count")
+```
+
+
 From long to wide
-```R
+
+```
 spread variable value
 ```
 
-gather and spread can also add variable label as a third variable, with the option `label`
+gather and spread can also alternate between a variable "label" and variable labels with the option `label`
