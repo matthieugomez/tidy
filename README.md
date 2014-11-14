@@ -1,4 +1,4 @@
-tidyr-stata
+tidy-stata
 ===========
 
 An implementation of the tidyr functions gather and spread in Stata
