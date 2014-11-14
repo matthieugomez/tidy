@@ -10,6 +10,7 @@ Wide dataset
 #> id  a   b
 #> 0	1	3
 #> 1	6	2
+```
 
 Long dataset
 ```R
