@@ -34,7 +34,7 @@ spread variable value
 
 Optionally, you can specify other names for the variables "variable" and "value" 
 ```
-gather a b, variable("key"), value("count")
+gather a b, variable("key") value("count")
 gather key count
 ```
 ```R
