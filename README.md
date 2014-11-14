@@ -5,7 +5,7 @@ An implementation of the [tidyr](https://github.com/hadley/tidyr) functions gath
 
 
 
-- gather is similar to reshape long
+- gather transforms a wide dataset into a long dataset:
 	```R
 	#> id   a   b
 	#> 0	1	3
@@ -23,7 +23,7 @@ An implementation of the [tidyr](https://github.com/hadley/tidyr) functions gath
 	#> 1         a     2
 	```
 
-- spread is similar to reshape wide 
+- spread transforms a long dataset into a wide dataset:
 
 	```R
 	#> id variable value
