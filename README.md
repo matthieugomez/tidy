@@ -41,7 +41,7 @@ An implementation of the [tidyr](https://github.com/hadley/tidyr) functions gath
 	#> 1	6	2
 	```
 
-- gather and spread handle variable labels
+- Additionally, gather and spread handle variable labels
 
 
 	```R
