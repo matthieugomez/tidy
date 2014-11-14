@@ -5,14 +5,14 @@ An implementation of the tidyr functions gather and spread in Stata
 
 
 
-
+Wide dataset
 ```R
-# wide
 #> id  a   b
 #> 0	1	3
 #> 1	6	2
 
-# long
+Long dataset
+```R
 #> id variable value
 #> 0         a     1
 #> 0         b     3
