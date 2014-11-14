@@ -5,13 +5,12 @@ An implementation of the tidyr functions gather and spread in Stata
 
 
 
-Wide dataset
+- gather is similar to reshape long
 ```R
 #> id  a   b
 #> 0	1	3
 #> 1	6	2
 ```
-From wide to long
 ```
 gather a b, variable("variable") value("value")
 ```
@@ -24,7 +23,7 @@ gather a b, variable("variable") value("value")
 #> 1         a     2
 ```
 
-From long to wide
+- spread is similar to reshape wide 
 ```
 spread variable value
 ```
