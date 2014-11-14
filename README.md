@@ -26,9 +26,16 @@ From wide to long
 gather a b
 ```
 
+From long to wide
+```
+spread variable value
+```
+
+
 Optionally, you can specify other names for the variables "variable" and "value" 
 ```
 gather a b, variable("key"), value("count")
+gather key count
 ```
 ```R
 #> id 	   key count
@@ -39,10 +46,5 @@ gather a b, variable("key"), value("count")
 ```
 
 
-From long to wide
-
-```
-spread variable value
-```
 
 gather and spread can also alternate between a variable "label" and variable labels with the option `label`
