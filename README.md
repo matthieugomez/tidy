@@ -36,12 +36,12 @@ An implementation of the tidyr functions gather and spread in Stata
 	spread variable value
 	```
 	```R
-	#> id  a   b
+	#> id   a   b
 	#> 0	1	3
 	#> 1	6	2
 	```
 
-- gather and spread can also alternate between a variable "label" and variable labels with the option `label`
+- gather and spread also handle variable labels
 
 
 	```R
@@ -53,6 +53,7 @@ An implementation of the tidyr functions gather and spread in Stata
 	```
 	```
 	spread variable value, label(label)
+	```
 	```R
 	#> id variable value
 	#> 0         a     1
