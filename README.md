@@ -11,19 +11,17 @@ Wide dataset
 #> 0	1	3
 #> 1	6	2
 ```
+From wide to long
+```
+gather a b
+```
 
-Long dataset
 ```R
 #> id variable value
 #> 0         a     1
 #> 0         b     3
 #> 1		 a     6
 #> 1         a     2
-```
-
-From wide to long
-```
-gather a b
 ```
 
 From long to wide
