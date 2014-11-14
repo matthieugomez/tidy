@@ -71,7 +71,7 @@ An implementation of the tidyr functions gather and spread in Stata
 	#> b                "units in %"
 	```
 	```
-	gather a b, variable("variable") value("value") label(label")
+	gather a b, variable("variable") value("value") label("label")
 	```
 	```R
 	#> id variable        label  value
