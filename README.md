@@ -13,7 +13,7 @@ Wide dataset
 ```
 From wide to long
 ```
-gather a b
+gather a b, variable("variable") value("value")
 ```
 
 ```R
@@ -34,19 +34,6 @@ spread variable value
 #> 1	6	2
 ```
 
-
-Optionally, you can specify other names for the variables "variable" and "value" 
-```
-gather a b, variable("key") value("count")
-gather key count
-```
-```R
-#> id 	   key count
-#> 0         a     1
-#> 0         b     3
-#> 1		 a     6
-#> 1         a     2
-```
 
 
 
