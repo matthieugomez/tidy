@@ -8,6 +8,12 @@ if "`value'"==""{
 	local value value
 }
 
+ds v_____*
+if "`r(varlist)'"{
+	display "Please rename variables staring with v______ first" as error
+	exit
+}
+
 local i = 0
 ds `varlist', not
 local ivar `r(varlist)'
