@@ -8,9 +8,9 @@ if "`value'"==""{
 	local value value
 }
 
-ds v_____*
+ds ____*
 if "`r(varlist)'"{
-	display "Please rename variables staring with v______ first" as error
+	display "Please rename variables staring with ____ first" as error
 	exit
 }
 
@@ -21,15 +21,15 @@ local names ""
 foreach v of varlist `varlist'{
 	local i = `i'+1
 	local l`i' : variable label `v'
-	rename `v' v_____`i'
+	rename `v' ____`i'
 }
 
-cap reshape long v_____, i(`ivar') j(`variable') string
+cap reshape long ____, i(`ivar') j(`variable') string
 if _rc~=0{
 	local i = 0
 	foreach v of varlist `varlist'{
 		local i = `i'+1
-		rename v_____`i' `v'
+		rename ____`i' `v'
 	}
 }
 else{
