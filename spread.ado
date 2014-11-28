@@ -5,9 +5,6 @@ tokenize `varlist'
 local variable `1'
 local value `2'
 
-
-
-
 if "`label'"~=""{
 	levelsof `variable', local(`variable'_levels)       
 	levelsof `label', local(`label'_levels)    
