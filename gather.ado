@@ -11,7 +11,7 @@ if "`value'"==""{
 ds ____*
 if "`r(varlist)'"{
 	display "Please rename variables staring with ____ first" as error
-	exit
+	exit 4
 }
 
 local i = 0
