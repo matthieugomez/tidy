@@ -10,7 +10,7 @@ if "`value'"==""{
 
 ds ____*
 if "`r(varlist)'"{
-	display "Please rename variables staring with ____ first" as error
+	display as error "Please rename variables staring with ____ first" 
 	exit 4
 }
 
