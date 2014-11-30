@@ -8,32 +8,53 @@ if "`value'"==""{
 	local value value
 }
 
-ds ____*
-if "`r(varlist)'"{
+ds `varlist'
+local varlist `r(varlist)'
+
+cap ds ____*
+if _rc == 0 {
 	display as error "Please rename variables staring with ____ first" 
 	exit 4
 }
 
+
+
+
 local i = 0
 ds `varlist', not
 local ivar `r(varlist)'
+
+tempname tempdup
+duplicates tag `ivar', gen(`tempdup')
+cap assert `tempdup' == 0
+if _rc {
+	display as error "key variables do  not uniquely identify the observations" 
+	exit 4
+}
+drop `tempdup'
+
+
+
 local names ""
-foreach v of varlist `varlist'{
+foreach v in `varlist'{
 	local i = `i'+1
 	local l`i' : variable label `v'
 	rename `v' ____`i'
 }
 
 cap reshape long ____, i(`ivar') j(`variable') string
+
 if _rc~=0{
 	local i = 0
-	foreach v of varlist `varlist'{
+	foreach v in `varlist'{
 		local i = `i'+1
 		rename ____`i' `v'
 	}
+	display as error "reshape terminated with error"
+	exit 4
 }
 else{
-	rename v_ `value'
+	rename ____ `value'
 	tokenize `varlist'
 	local i = 0
 	if "`label'"~=""{
