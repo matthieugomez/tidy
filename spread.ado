@@ -1,8 +1,7 @@
 program define spread
 syntax varlist, [variable(varname) value(varname) label(varname)]
-
 tokenize `varlist'
-local variable `variable'
+local variable `1'
 local value `2'
 qui{
 	ds `variable' `value', not
@@ -12,7 +11,8 @@ qui{
 		display as error "Some observations for `variable' don't have valid variable names" 
 		exit 4
 	}
-	gen `temp' = !regexm(`tempvariable',"^[a-zA-Z_]*[a-zA-Z_0-9]*$")
+	tempvar temp
+	gen `temp' = !regexm(`variable',"^[a-zA-Z_]*[a-zA-Z_0-9]*$")
 	count if `temp' == 1
 	if `r(N)' > 0 {
 		display as error "Some observations for `variable' don't have valid variable names" 
@@ -29,16 +29,11 @@ qui{
 			exit 4
 		}
 	}
-	}
-	else
-
 	if "`label'"~=""{
 		levelsof `label', local(label_levels)    
 		drop `label'
 	}
-
 }
-drop `variable'
 reshape wide `value', i(`ivar') j(`variable') string
 foreach v of varlist `value'*{
 	rename `v' `=subinstr("`v'", "`value'", "", 1)'
