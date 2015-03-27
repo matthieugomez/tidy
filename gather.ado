@@ -17,21 +17,16 @@ if _rc == 0 {
 	exit 4
 }
 
-
-
-
 local i = 0
 ds `varlist', not
 local ivar `r(varlist)'
 
 tempname tempdup
-duplicates tag `ivar', gen(`tempdup')
-cap assert `tempdup' == 0
+cap bys `ivar':  assert _N == 1
 if _rc {
-	display as error "key variables do  not uniquely identify the observations" 
+	display as error "key variables do not uniquely identify the observations" 
 	exit 4
 }
-drop `tempdup'
 
 
 
