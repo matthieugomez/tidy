@@ -12,15 +12,16 @@ program define spread
 		}
 		else{
 			local string string
+			gen `temp' = !regexm(`variable',"^[a-zA-Z_]*[a-zA-Z\_0-9]*$")
+			count if `temp' == 1
+			if `r(N)' > 0 {
+				display as error "Some observations for `variable' don't have valid variable names" 
+				noi list `variable' if `temp' == 1
+				exit 4
+			}
 		}
 		tempvar temp
 
-		gen `temp' = !regexm(`variable',"^[a-zA-Z_]*[a-zA-Z\_0-9]*$")
-		count if `temp' == 1
-		if `r(N)' > 0 {
-			display as error "Some observations for `variable' don't have valid variable names" 
-			exit 4
-		}
 		*/
 		levelsof `variable', local(variable_levels)       
 		local variable_levels : list clean variable_levels
