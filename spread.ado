@@ -6,12 +6,13 @@ program define spread
 	qui{
 		ds `variable' `value', not
 		local ivar `r(varlist)'
-		cap	confirm stringvariable `variable' 
+		cap	confirm string variable `variable' 
 		if _rc{
 			local string ""
 		}
 		else{
 			local string string
+			tempvar temp
 			gen `temp' = !regexm(`variable',"^[a-zA-Z_]*[a-zA-Z\_0-9]*$")
 			count if `temp' == 1
 			if `r(N)' > 0 {
