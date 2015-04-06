@@ -16,8 +16,8 @@ program define spread
 			gen `temp' = !regexm(`variable',"^[a-zA-Z_]*[a-zA-Z\_0-9]*$")
 			count if `temp' == 1
 			if `r(N)' > 0 {
-				display as error "Some observations for `variable' don't have valid variable names" 
-				noi list `variable' if `temp' == 1
+				levelsof `variable' if `temp' == 1
+				display as error `"Some observations for `variable' don't have valid variable names: `=r(levels)'" 
 				exit 4
 			}
 		}
