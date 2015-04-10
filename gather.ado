@@ -1,4 +1,5 @@
 program define gather
+	version 12.1
 	syntax varlist[, variable(string) value(string) label(string)]
 
 	if "`variable'"==""{
@@ -18,7 +19,7 @@ program define gather
 		exit
 	}
 
-	ds `varlist'
+	qui ds `varlist'
 	local varlist `r(varlist)'
 
 	cap ds ____*
@@ -28,7 +29,7 @@ program define gather
 	}
 
 	local i = 0
-	ds `varlist', not
+	qui ds `varlist', not
 	local ivar `r(varlist)'
 
 	tempname tempdup
@@ -67,13 +68,13 @@ program define gather
 			local i = 0
 			foreach name in `varlist'{
 				local i = `i'+1
-				replace `label' = "`l`i''" if `variable' == "`i'"
+				qui replace `label' = "`l`i''" if `variable' == "`i'"
 			}
 		}
 		local i =0
 		foreach name in `varlist'{
 			local i = `i'+1
-			replace `variable' = "``i''" if `variable' == "`i'"
+			qui replace `variable' = "``i''" if `variable' == "`i'"
 		}
 	}
 end

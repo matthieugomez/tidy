@@ -5,73 +5,23 @@ An implementation of the [tidyr](https://github.com/hadley/tidyr) functions gath
 
 
 
-- gather transforms a wide dataset into a long dataset:
-	```R
-	#> id   a   b
-	#> 0	1	3
-	#> 1	6	2
-	```
-	```
-	gather a b, variable("variable") value("value")
-	```
+- gather transforms a wide dataset into a long dataset. Just specify the varlist that need to be gathered
 
-	```R
-	#> id variable value
-	#> 0         a     1
-	#> 0         b     3
-	#> 1		 a     6
-	#> 1         a     2
 	```
-
-- spread transforms a long dataset into a wide dataset:
-
-	```R
-	#> id variable value
-	#> 0         a     1
-	#> 0         b     3
-	#> 1		 a     6
-	#> 1         a     2
+	sysuse educ99gdp.dta, clear
+	list
+	gather public private
+	list
 	```
-	```
-	spread variable value
-	```
-	```R
-	#> id   a   b
-	#> 0	1	3
-	#> 1	6	2
-	```
-
-- gather and spread handle variable labels
+	![](img/gather.jpg)
 
 
-	```R
-	#> id variable value
-	#> 0         a     1
-	#> 0         b     3
-	#> 1		 a     6
-	#> 1         a     2
-	```
-	```
-	ds *, d
-	```
-	```R
-	#> variable name  variable label
-	#> id                          
-	#> a                "units in $"          
-	#> b                "units in %"
-	```
-	```
-	gather a b, variable("variable") value("value") label("label")
-	```
-	```R
-	#> id variable        label  value
-	#> 0         a "units in $"      1
-	#> 0         b "units in %"      3
-	#> 1		 a "units in $"      6
-	#> 1         a "units in %"      2
-	```
-	```
-	spread variable value, label(label)
-	```
+	
+- spread transforms a long dataset into a wide dataset. The first variable must contains the name of the new variables. The second variable must contains the value of the new variable
 
+	```
+	spread public private
+	list
+	```
+	![](img/spread.jpg)
 

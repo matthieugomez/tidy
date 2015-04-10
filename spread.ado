@@ -1,4 +1,5 @@
 program define spread
+	version 12.1
 	syntax varlist, [variable(varname) value(varname) label(varname)]
 	tokenize `varlist'
 	local variable `1'
@@ -17,7 +18,7 @@ program define spread
 			count if `temp' == 1
 			if `r(N)' > 0 {
 				levelsof `variable' if `temp' == 1
-				display as error `"Some observations for `variable' don't have valid variable names: `=r(levels)'" 
+				display as error `"Some observations for `variable' don't have valid variable names: `=r(levels)'"'
 				exit 4
 			}
 		}
@@ -40,12 +41,33 @@ program define spread
 			drop `label'
 		}
 	}
-	reshape wide `value', i(`ivar') j(`variable') `string'
+	loca ni `:word count `ivar''
+	if `ni' > 10{
+		tempvar id
+		bys `ivar': gen `id' = 1
+		qui replace `id' = sum(`id')
+		local i `id'
+	}
+	else{
+		local i `ivar'
+	}
+	qui reshape wide `value', i(`i') j(`variable') `string'
 	if "`string'" ~= ""{
 		foreach v of varlist `value'*{
-			rename `v' `=subinstr("`v'", "`value'", "", 1)'
+			local newname  `=subinstr("`v'", "`value'", "", 1)'
+			rename `v' `newname'
+			local names `names' `newname'
 		}
 	}
+	else{
+		foreach v of varlist `value'*{
+			local names `names' `v'
+		}
+	}
+	local names  `=subinstr("`names'", " ", ", ", .)'
+
+	di as result "new variables created: " as text "`names'"
+
 	if "`label'"~=""{
 		tokenize `"`label_levels''"'
 		local i = 0
