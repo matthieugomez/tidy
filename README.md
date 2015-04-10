@@ -3,15 +3,15 @@ stata-tidy
 
 An implementation of the [tidyr](https://github.com/hadley/tidyr) functions gather and spread in Stata
 
-
+```
+sysuse educ99gdp.dta, clear
+```
 
 - gather transforms a wide dataset into a long dataset. Just specify the varlist that need to be gathered
 
+
 	```
-	sysuse educ99gdp.dta, clear
-	list
 	gather public private
-	list
 	```
 	![](img/gather.jpg)
 
@@ -21,7 +21,6 @@ An implementation of the [tidyr](https://github.com/hadley/tidyr) functions gath
 
 	```
 	spread public private
-	list
 	```
 	![](img/spread.jpg)
 
