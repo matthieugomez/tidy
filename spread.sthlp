@@ -7,7 +7,7 @@
 
 {marker syntax}{...}
 {title:Syntax}
-{cmd:spread}{cmd:,} {opt variable(varname_variable)} {opt value(varname_value)} {cmd:[}{opt label(varname_label)}{cmd:]}
+{cmd:spread} {it:varname_variable} {it:varname_value} {cmd:,}[{opt label(legendvar)}]
 
 
 
