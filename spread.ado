@@ -58,9 +58,8 @@ program define spread
 		foreach v in `variable_levels'{
 			local i = `i'+1
 			if "`string'" ~= ""{
-				local newname  `=subinstr("`v'", "`value'", "", 1)'
-				rename `value'`v' `newname'
-				local names `names' `newname'
+				rename `value'`v' `v'
+				local names `names' `v'
 
 			}
 			else{
