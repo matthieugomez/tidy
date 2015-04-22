@@ -1,3 +1,9 @@
 v 3
-d M. Gomez
-p tidy implementation of tidyr in stata
+d Matthieu Gomez, Princeton University (mattg@princeton.edu)
+p tidy TIDY - Stata implementation of the R package tidyr
+
+* l word-to-show path-or-url [description]
+* t: Directories within site:
+* t path [description]
+* Packages:
+* p pkgname [description]
