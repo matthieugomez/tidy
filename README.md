@@ -32,3 +32,19 @@ The option `variable` and `value` allow to specify different names for the new v
 	drop variable
 	spread g value
 	```
+
+
+
+	```
+
+# Installation
+```
+net install tidy, from(https://github.com/matthieugomez/stata-tidy/raw/master/)
+```
+
+If you have a version of Stata < 13, you need to install it manually
+Click the "Download ZIP" button in the right column to download a zipfile. Extract it into a folder (e.g. ~/SOMEFOLDER)
+2. Run: (changing SOMEFOLDER with whatever you picked)
+```
+cap ado uninstall tidy
+net install tex, from("~/SOMEFOLDER")
