@@ -49,14 +49,21 @@ program define gather
 	}
 
 	cap reshape long ____, i(`ivar') j(`variable') string
-	if _rc~=0{
+	if _rc{
+		if _rc== 103{
+			display as error "too many variables specified"
+		}
+		else{
+			"reshape terminated with error"
+		}
+		reshape long ____, i(`ivar') j(`variable') string
 		local i = 0
 		foreach v in `varlist'{
 			local i = `i'+1
 			rename ____`i' `v'
 		}
 		display as error "reshape terminated with error"
-		exit 4
+		exit _rc
 	}
 	else{
 		rename ____ `value'

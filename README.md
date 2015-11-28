@@ -15,15 +15,15 @@ They are replaced by two new variables: the variable "variable" (containing the 
 
 The option `variable` and `value` allow to specify different names for the new variables. The option `label` creates a new variable to store the labels of the former variables.
 	
-- spread transforms a long dataset into a wide dataset. The first variable must contains the names of the new variables. The second must contain the value of the new variable.
+- spread transforms a long dataset into a wide dataset. The first variable contains the names of the new variables. The second contains its corresponding values
 
 	```
 	spread variable value
 	```
 	![](img/spread.jpg)
 
-	- If the first variable is a string, the values become the names of the new variables
-	- If the first variable is numeric, the new variables names are constructed as the name of the second variable followed by the numeric value. Value labels are transformed into variable labels.
+	- If the first variable is a string, new variable names are constructed from the first variable values.
+	- If the first variable is numeric, new variable names are constructed from the first variables name appended by its values. Eventual value labels are transformed into variable labels.
 
 	```
 	sysuse educ99gdp.dta, clear
