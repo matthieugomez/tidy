@@ -16,8 +16,6 @@ Use the option  `label`  to store the labels of the former variables in a new va
 ## spread
 spread transforms a long dataset into a wide dataset. The command takes two variables as an argument. The first variable contains the names of the new variables, the second variable contains its corresponding values.
 
-
-Starting from the former example:
 ![](img/spread.jpg)
 
 - If the first variable is a string, new variable names are constructed from its values.
