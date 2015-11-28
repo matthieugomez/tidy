@@ -17,8 +17,8 @@ spread transforms a long dataset into a wide dataset. The command takes two vari
 
 ![](img/spread.jpg)
 
-- If the first variable is a string, new variable names are constructed from the first variable values.
-- If the first variable is numeric, new variable names are constructed from the first variables name appended by its values. Eventual value labels are transformed into variable labels.
+- If the first variable is a string, new variable names are constructed from its values.
+- If the first variable is numeric, new variable names are constructed from its values prefixed by its name. Eventual value labels are transformed into variable labels.
 
 
 ## Installation
