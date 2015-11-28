@@ -38,4 +38,4 @@ If you have a version of Stata < 13, you need to install it manually:
 	```
 
 ## References
-This package is a basic implement of the [tidyr package](https://github.com/hadley/tidyr) in R.
+This package is a basic implementation of the [tidyr package](https://github.com/hadley/tidyr) in R.
