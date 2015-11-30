@@ -3,5 +3,6 @@ d {bf: M. Gomez}
 d Distribution-Date: 20141117
 f gather.ado
 f spread.ado
+f unite.ado
 f gather.sthlp
 f spread.sthlp
