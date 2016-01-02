@@ -1,7 +1,7 @@
 stata-tidy
 ===========
 
-
+This is a basic implementation of the  [tidyr package](https://github.com/hadley/tidyr) from R.
 ## gather
 gather transforms a wide dataset into a long dataset. The command takes a varlist as an argument, composed of the list of variables to gather.
 
@@ -34,6 +34,3 @@ If you have a version of Stata < 13, you need to install it manually:
 	cap ado uninstall tidy
 	net install tex, from("~/SOMEFOLDER")
 	```
-
-## References
-This package is a basic implementation of the [tidyr package](https://github.com/hadley/tidyr) in R.

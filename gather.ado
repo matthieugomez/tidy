@@ -31,13 +31,19 @@ program define gather
 	local i = 0
 	qui ds `varlist', not
 	local ivar `r(varlist)'
-
-	tempname tempdup
-	cap bys `ivar':  assert _N == 1
-	if _rc {
-		display as error "key variables do not uniquely identify the observations" 
-		exit 4
+	display "`ivar'"
+	if "`ivar'" ~= ""{
+		cap bys `ivar':  assert _N == 1
+		if _rc {
+			display as error "key variables do not uniquely identify the observations" 
+			exit 4
+		}
 	}
+	else{
+		tempvar ivar
+		gen `ivar' = 1
+	}
+	tempname tempdup
 
 
 
@@ -54,7 +60,7 @@ program define gather
 			display as error "too many variables specified"
 		}
 		else{
-			"reshape terminated with error"
+			display as error "reshape terminated with error"
 		}
 		reshape long ____, i(`ivar') j(`variable') string
 		local i = 0
