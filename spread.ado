@@ -1,22 +1,39 @@
 program define spread
 	version 12.1
-	syntax varlist, [variable(varname) value(varname)]
+	syntax varlist, [variable(varname) value(varname) label(string)]
 	tokenize `varlist'
 	local variable `1'
 	local value `2'
 	qui{
-		ds `variable' `value', not
-		local ivar `r(varlist)'
 
-
-
-		levelsof `variable', local(variable_levels)  clean
-		if "`: value label `variable''" ~= ""{
-			local labeldummy yes
-			foreach v in `variable_levels'{
-				local variable_label`v' `: label (`variable') `v''
-			}
+		/* take care of label */
+		if "`label'" == "" & "`:value label `variable''" ~= ""{
+			tempvar label
+			decode `variable', gen(`label')
 		}
+
+		/* create variable`i' and label`i' */
+		sort `variable'
+		tempvar bylength
+		bys `variable' : gen double `bylength' = _N 
+		local start = 1
+		local i = 0
+		while `start' <= _N {
+			local i = `i' + 1
+			local end = `start' + `=`bylength'[`start']' - 1
+			local variable_levels `"`variable_levels'  `"`=`variable'[`start']'"'"'
+			if "`label'" ~= ""{
+				local label_levels `"`label_levels'  `"`=`label'[`start']'"'"'
+			}
+			local start = `end' + 1
+		}
+		local n = `i'
+	
+		ds `variable' `value' `label' `bylength' , not
+		local ivar `r(varlist)'
+		
+
+
 
 		cap	confirm string variable `variable' 
 		if _rc{
@@ -51,24 +68,24 @@ program define spread
 		else{
 			local i `ivar'
 		}
+
+		/* reshape */
+		drop `bylength' `label'
 		qui reshape wide `value', i(`i') j(`variable') `string'
 
 
-		local i = 0 
-		foreach v in `variable_levels'{
-			local i = `i'+1
+		forval i = 1/`n'{
+			local v : word `i' of `variable_levels'
 			if "`string'" ~= ""{
 				rename `value'`v' `v'
 				local names `names' `v'
-
 			}
 			else{
-				if "`labeldummy'" ~= ""{
-					label variable `value'`v' ""
-					noi di  "`variable_label`v''"
-					label variable `value'`v' `variable_label`v''
-				}
 				local names `names' `value'`v'
+			}
+			if "`label'" ~= ""{
+				local l : word `i' of  `label_levels'
+				label variable `v' `"`l'"'
 			}
 		}
 		di as result "new variables created: " as text "`=subinstr("`names'", " ", ", ", .)'"
