@@ -28,9 +28,14 @@ program define spread
 			local start = `end' + 1
 		}
 		local n = `i'
-	
+
 		ds `variable' `value' `label' `bylength' , not
 		local ivar `r(varlist)'
+		if "`ivar'" == ""{
+			tempvar newivar
+			gen `newivar' = _N
+			local ivar `newivar'
+		}
 		
 
 
@@ -73,23 +78,43 @@ program define spread
 		drop `bylength' `label'
 		qui reshape wide `value', i(`i') j(`variable') `string'
 
+		/* check all new variable names are valid new variable name */
 
-		forval i = 1/`n'{
-			local v : word `i' of `variable_levels'
-			if "`string'" ~= ""{
-				rename `value'`v' `v'
-				local names `names' `v'
+		if "`string'" == ""{
+			local change "no"
+		}
+		else{
+			forval i = 1/`n'{
+				local v : word `i' of `variable_levels'
+				cap confirm new variable `v'
+				if _rc{
+					di as error "`value'`v'"
+					local change "no"
+				}
 			}
-			else{
-				local names `names' `value'`v'
-			}
+		}
+
+
+	forval i = 1/`n'{
+		local v : word `i' of `variable_levels'
+		if "`change'" != "no"{
+			rename `value'`v' `v'
+			local names `names' `v'
 			if "`label'" ~= ""{
 				local l : word `i' of  `label_levels'
 				label variable `v' `"`l'"'
 			}
 		}
-		di as result "new variables created: " as text "`=subinstr("`names'", " ", ", ", .)'"
+		else{
+			local names `names' `value'`v'
+			if "`label'" ~= ""{
+				local l : word `i' of  `label_levels'
+				label variable `value'`v' `"`l'"'
+			}
+		}
 	}
+	di as result "new variables created: " as text "`=subinstr("`names'", " ", ", ", .)'"
+}
 end
 
 
