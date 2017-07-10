@@ -7,7 +7,7 @@
 {viewerjumpto "Examples" "spread##examples"}{...}
 
 {title:Title}
-{bf:spread} {hline 2} An easier way to reshape long
+{bf:spread} {hline 2} An easier way to reshape wide
 
 {marker syntax}{...}
 {title:Syntax}
@@ -15,7 +15,7 @@
 
 {marker description}{...}
 {title:Description}
-{cmd:spread} spreads a variable-value pair across multiple columns. Its goal is similar to the identically titled function in the tidyr package.
+{cmd:spread} spreads a variable-value pair across multiple columns. It is a simpler version of reshape wide. Its goal is similar to the identically titled function in the tidyr package.
 
 {marker options}{...}
 {title:Options}

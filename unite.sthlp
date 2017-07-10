@@ -21,8 +21,8 @@
 {synoptset 30 tabbed}{...}
 {synopthdr}
 {synoptline}
-{synopt :{opt sep(newvar)}}  Name of the new variable {p_end}
-{synopt :{opt sep(string)}}  Separator between variables. Default to _ {p_end}
+{synopt :{opt sep(newvar)}}  Name of the new variable
+{synopt :{opt sep(string)}}  Separator between variables. Default to _
 
 {marker examples}{...}
 {title:Examples}
