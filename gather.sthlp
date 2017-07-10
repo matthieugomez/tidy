@@ -22,9 +22,9 @@
 {synoptset 30 tabbed}{...}
 {synopthdr}
 {synoptline}
-{synopt :{opt variable(newvar)}} name of new variable corresponding to variable names. Defaults to "variable" 
-{synopt :{opt value(newvar)}}  name of new variable corresponding to variable values. Defaults to "values" 
-{synopt :{opt label(newvar)}}  creates a new variable to store the variable labels of {it:varlist}.
+{synopt :{opt variable(newvar)}} name of new variable corresponding to variable names. Defaults to "variable" {p_end}
+{synopt :{opt value(newvar)}}  name of new variable corresponding to variable values. Defaults to "values" {p_end}
+{synopt :{opt label(newvar)}} creates a new variable to store the variable labels of {it:varlist} {p_end}
 
 {marker examples}{...}
 {title:Examples}

@@ -22,7 +22,7 @@
 {synoptset 30 tabbed}{...}
 {synopthdr}
 {synoptline}
-{synopt :{opt label(varname)}} uses the string variable varname to construct variable labels for new variables
+{synopt :{opt label(varname)}} uses the string variable varname to construct variable labels for new variables 
 
 {marker examples}{...}
 {title:Examples}
