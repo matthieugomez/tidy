@@ -33,3 +33,17 @@
 {phang2}{cmd:. gen var1 = "a"}{p_end}
 {phang2}{cmd:. gen var2 = "b"}{p_end}
 {phang2}{cmd:. unite var1 var2, gen(var3)}{p_end}
+
+{marker contact}{...}
+{title:Author}
+
+{phang}
+Matthieu Gomez
+
+{phang}
+Department of Economics, Princeton University
+
+{phang}
+Please report issues on Github
+{browse "https://github.com/matthieugomez/stata-tidy":https://github.com/matthieugomez/stata-tidy}
+{p_end}

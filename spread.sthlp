@@ -32,3 +32,17 @@
 {phang2}{cmd:. sysuse educ99gdp.dta, clear}{p_end}
 {phang2}{cmd:. gather public private}{p_end}
 {phang2}{cmd:. spread variable value}{p_end}
+
+{marker contact}{...}
+{title:Author}
+
+{phang}
+Matthieu Gomez
+
+{phang}
+Department of Economics, Princeton University
+
+{phang}
+Please report issues on Github
+{browse "https://github.com/matthieugomez/stata-tidy":https://github.com/matthieugomez/stata-tidy}
+{p_end}
