@@ -13,11 +13,10 @@
 {title:Syntax}
 {cmd:gather} {varlist} {cmd:, [}{opt variable(string)} {opt value(string)} {opt label(string)}{cmd:]}
 
-
 {marker description}{...}
 {title:Description}
-{pstd}
 {cmd:gather}  takes multiple variables and collapses into variable-value pairs. Its goal is similar to the identically titled function in the tidyr package.
+
 {marker options}{...}
 {title:Options}
 {synoptset 30 tabbed}{...}
@@ -27,12 +26,8 @@
 {synopt :{opt value(newvar)}}  name of new variable corresponding to variable values. Defaults to "values" {p_end}
 {synopt :{opt label(newvar)}}  creates a new variable to store the variable labels of {it:varlist}.{p_end}
 
-
-
 {marker examples}{...}
 {title:Examples}
-
-{pstd}Setup{p_end}
 {phang2}{cmd:. sysuse educ99gdp.dta, clear}{p_end}
 {phang2}{cmd:. gather public private}{p_end}
 

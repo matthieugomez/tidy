@@ -15,9 +15,7 @@
 
 {marker description}{...}
 {title:Description}
-{pstd}
 {cmd:spread} spreads a variable-value pair across multiple columns. Its goal is similar to the identically titled function in the tidyr package.
-
 
 {marker options}{...}
 {title:Options}
@@ -26,11 +24,8 @@
 {synoptline}
 {synopt :{opt label(varname)}} uses the string variable varname to construct variable labels for new variables
 
-
 {marker examples}{...}
 {title:Examples}
-
-{pstd}Setup{p_end}
 {phang2}{cmd:. sysuse educ99gdp.dta, clear}{p_end}
 {phang2}{cmd:. gather public private}{p_end}
 {phang2}{cmd:. spread variable value}{p_end}
