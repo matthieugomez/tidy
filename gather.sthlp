@@ -15,6 +15,7 @@
 
 {marker description}{...}
 {title:Description}
+{pstd}
 {cmd:gather}  takes multiple variables and collapses into variable-value pairs. It is a simpler version of reshape long. Its goal is similar to the identically titled function in the tidyr package.
 
 {marker options}{...}
@@ -25,6 +26,8 @@
 {synopt :{opt variable(newvar)}} name of new variable corresponding to variable names. Defaults to "variable" {p_end}
 {synopt :{opt value(newvar)}}  name of new variable corresponding to variable values. Defaults to "values" {p_end}
 {synopt :{opt label(newvar)}} creates a new variable to store the variable labels of {it:varlist} {p_end}
+{synoptline}
+{p2colreset}{...}
 
 {marker examples}{...}
 {title:Examples}

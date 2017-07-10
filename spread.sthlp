@@ -15,6 +15,7 @@
 
 {marker description}{...}
 {title:Description}
+{pstd}
 {cmd:spread} spreads a variable-value pair across multiple columns. It is a simpler version of reshape wide. Its goal is similar to the identically titled function in the tidyr package.
 
 {marker options}{...}
@@ -22,7 +23,9 @@
 {synoptset 30 tabbed}{...}
 {synopthdr}
 {synoptline}
-{synopt :{opt label(varname)}} uses the string variable varname to construct variable labels for new variables 
+{synopt :{opt label(varname)}} uses the string variable varname to construct variable labels for new variables {p_end}
+{synoptline}
+{p2colreset}{...}
 
 {marker examples}{...}
 {title:Examples}
