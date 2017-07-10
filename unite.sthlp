@@ -6,10 +6,12 @@
 {viewerjumpto "Examples" "unite##examples"}{...}
 
 {title:Title}
+
 {bf:unite} {hline 2} Paste together multiple variables into one
 
 {marker syntax}{...}
 {title:Syntax}
+
 {p 8 15 2}{cmd:unite} {varlist} {cmd:,}  {opt gen(newvar)} [{opt sep(string)}]
 
 {marker description}{...}
