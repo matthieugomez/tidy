@@ -11,12 +11,12 @@
 
 {marker syntax}{...}
 {title:Syntax}
-{p 8 15 2}{cmd:spread} {it:variable} {it:value} {cmd:, [} {opt label(varname)} {cmd:]}
+{p 8 15 2}{cmd:spread} {it:variable} {it:value} {cmd:, [}{opt label(varname)}{cmd:]}
 
 {marker description}{...}
 {title:Description}
 {pstd}
-{cmd:spread} spreads a variable-value pair across multiple columns. It is a simpler version of reshape wide. Its goal is similar to the identically titled function in the R package tidyr.
+{cmd:spread} spreads a variable value pair across multiple columns. It is a simpler version of reshape wide. Its goal is similar to the homonym function in the R package tidyr.
 
 {marker options}{...}
 {title:Options}

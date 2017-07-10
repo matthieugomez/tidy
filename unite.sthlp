@@ -6,18 +6,16 @@
 {viewerjumpto "Examples" "unite##examples"}{...}
 
 {title:Title}
-
 {bf:unite} {hline 2} Paste together multiple variables into one
 
 {marker syntax}{...}
 {title:Syntax}
-
-{p 8 15 2}{cmd:unite} {varlist} {cmd:,}  {opt gen(newvar)} [{opt sep(string)}]
+{p 8 15 2}{cmd:unite} {varlist} {cmd:,}  {opt gen(newvar)} {cmd:[}{opt sep(string)}{cmd:]}
 
 {marker description}{...}
 {title:Description}
 {pstd}
-{cmd:unite} pastes together multiple variables into one. Its goal is similar to the identically titled function in the R package tidyr.
+{cmd:unite} pastes together a list of variables {varlist} into one. Its goal is similar to the homonym function in the R package tidyr.
 
 {marker options}{...}
 {title:Options}
