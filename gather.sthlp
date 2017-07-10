@@ -1,12 +1,13 @@
 {smcl}
-{* *! version 1.2.1  07mar2013}{...}
+{* *! version 1.0  10jul2017}{...}
 {vieweralsosee "reshape" "help reshape"}{...}
-{viewerjumpto "Syntax" "sumup##syntax"}{...}
-{viewerjumpto "Description" "sumup##description"}{...}
-{viewerjumpto "Options" "sumup##options"}{...}
+{viewerjumpto "Syntax" "gather##syntax"}{...}
+{viewerjumpto "Description" "gather##description"}{...}
+{viewerjumpto "Options" "gather##options"}{...}
+{viewerjumpto "Examples" "gather##examples"}{...}
 
 {title:Title}
-{bf:gather} {hline 2} reshapes the dataset to a long form
+{bf:gather} {hline 2} An easier way to reshape long
 
 {marker syntax}{...}
 {title:Syntax}
@@ -16,13 +17,23 @@
 {marker description}{...}
 {title:Description}
 {pstd}
-{cmd:gather} gathers the variables in {it:varlist} and creates two variables, names variable and values. 
-
+{cmd:gather}  takes multiple variables and collapses into variable-value pairs. Its goal is similar to the identically titled function in the tidyr package.
 {marker options}{...}
 {title:Options}
 {synoptset 30 tabbed}{...}
 {synopthdr}
 {synoptline}
-{synopt :{opt variable(varname)}}  name of new variable corresponding to variable names; default is "variable" {p_end}
-{synopt :{opt value(varname)}}  name of new variable corresponding to variable values; default is "values" {p_end}
-{synopt :{opt label(varname)}}  creates a new variable storing the variable labels of {it:varlist}.{p_end}
+{synopt :{opt variable(newvar)}} name of new variable corresponding to variable names. Defaults to "variable" {p_end}
+{synopt :{opt value(newvar)}}  name of new variable corresponding to variable values. Defaults to "values" {p_end}
+{synopt :{opt label(newvar)}}  creates a new variable to store the variable labels of {it:varlist}.{p_end}
+
+
+
+{marker examples}{...}
+{title:Examples}
+
+{pstd}Setup{p_end}
+{phang2}{cmd:. sysuse educ99gdp.dta, clear}{p_end}
+{phang2}{cmd:. gather public private}{p_end}
+
+
