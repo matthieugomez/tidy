@@ -11,13 +11,12 @@
 
 {marker syntax}{...}
 {title:Syntax}
-{cmd:gather} {varlist} {cmd:, [}{opt variable(string)} {opt value(string)} {opt label(string)}{cmd:]}
+{p 8 15 2}{cmd:gather} {varlist} {cmd:, [}{opt variable(string)} {opt value(string)} {opt label(string)}{cmd:]}
 
 {marker description}{...}
 {title:Description}
 {pstd}
-{cmd:gather}  takes multiple variables and collapses into variable-value pairs. It is a simpler version of reshape long. Its goal is similar to the identically titled function in the tidyr package.
-
+{cmd:gather}  takes multiple variables and collapses into variable-value pairs. It is a simpler version of reshape long. Its goal is similar to the identically titled function in the R package tidyr.
 {marker options}{...}
 {title:Options}
 {synoptset 30 tabbed}{...}

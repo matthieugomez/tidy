@@ -10,12 +10,12 @@
 
 {marker syntax}{...}
 {title:Syntax}
-{cmd:unite} {varlist} {cmd:,}  {opt gen(newvar)} [{opt sep(string)}]
+{p 8 15 2}{cmd:unite} {varlist} {cmd:,}  {opt gen(newvar)} [{opt sep(string)}]
 
 {marker description}{...}
 {title:Description}
 {pstd}
-{cmd:unite} pastes together multiple variables into one. Its goal is similar to the identically titled function in the tidyr package.
+{cmd:unite} pastes together multiple variables into one. Its goal is similar to the identically titled function in the R package tidyr.
 
 {marker options}{...}
 {title:Options}
