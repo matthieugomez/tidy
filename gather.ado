@@ -22,6 +22,31 @@ program define gather
 	qui ds `varlist'
 	local varlist `r(varlist)'
 
+	/* check same type */
+	local type ""
+	foreach v in `varlist'{
+		cap confirm string var `v'
+		if _rc == 0{
+			if "`type'" == "numeric"{
+				di as error "Variables to gather do not have the same type"
+				exit 198
+			}
+			else{
+				local type "string"
+			}
+		}
+		else{
+			if "`type'" == "string"{
+				di as error "Variables to gather do not have the same type"
+				exit 198
+			}
+			else{
+				local type "numeric"
+			}
+		}
+	}
+
+
 	cap ds ____*
 	if _rc == 0 {
 		display as error "Please rename variables staring with ____ first" 
@@ -31,7 +56,6 @@ program define gather
 	local i = 0
 	qui ds `varlist', not
 	local ivar `r(varlist)'
-	display "`ivar'"
 	if "`ivar'" ~= ""{
 		cap bys `ivar':  assert _N == 1
 		if _rc {
