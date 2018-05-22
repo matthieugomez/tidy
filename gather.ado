@@ -1,6 +1,8 @@
 program define gather
 	version 12.1
-	syntax varlist[, variable(string) value(string) label(string)]
+	syntax varlist[, variable(string) value(string) label(string) fast]
+
+	if ("`fast'" == "") preserve
 
 	if "`variable'"==""{
 		local variable variable
@@ -77,8 +79,11 @@ program define gather
 		local l`i' : variable label `v'
 		rename `v' ____`i'
 	}
-
-	cap reshape long ____, i(`ivar') j(`variable') string
+	cap which fastreshape
+	if _rc == 0{
+		local fast fast
+	}
+	`fast'reshape long ____, i(`ivar') j(`variable') string `fast'
 	if _rc{
 		if _rc== 103{
 			display as error "too many variables specified"
@@ -86,7 +91,6 @@ program define gather
 		else{
 			display as error "reshape terminated with error"
 		}
-		reshape long ____, i(`ivar') j(`variable') string
 		local i = 0
 		foreach v in `varlist'{
 			local i = `i'+1
@@ -114,6 +118,8 @@ program define gather
 			qui replace `variable' = "``i''" if `variable' == "`i'"
 		}
 	}
+
+	if ("`fast'" == "") cap restore, not
 end
 
 
