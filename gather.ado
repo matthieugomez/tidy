@@ -81,9 +81,12 @@ program define gather
 	}
 	cap which fastreshape
 	if _rc == 0{
-		local fast fast
+		local reshape fastreshape
 	}
-	`fast'reshape long ____, i(`ivar') j(`variable') string `fast'
+	else{
+		local reshape reshape
+	}
+	`reshape' long ____, i(`ivar') j(`variable') string `fast'
 	if _rc{
 		if _rc== 103{
 			display as error "too many variables specified"

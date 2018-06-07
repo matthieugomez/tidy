@@ -81,9 +81,12 @@ program define spread
 		drop `bylength' `label'
 		cap which fastreshape
 		if _rc == 0{
-			local fast fast
+			local reshape fastreshape
 		}
-		qui `fast'reshape wide `value', i(`i') j(`variable') `string' `fast'
+		else{
+			local reshape reshape
+		}
+		qui `reshape' wide `value', i(`i') j(`variable') `string' `fast'
 
 
 		/* check all new variable names are valid new variable name */
