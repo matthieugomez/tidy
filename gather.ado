@@ -79,14 +79,14 @@ program define gather
 		local l`i' : variable label `v'
 		rename `v' ____`i'
 	}
-	cap which fastreshape
+	cap which greshape
 	if _rc == 0{
-		local reshape fastreshape
+		local reshape greshape
 	}
 	else{
 		local reshape reshape
 	}
-	`reshape' long ____, i(`ivar') j(`variable') string `fast'
+	reshape long ____, i(`ivar') j(`variable') string `fast'
 	if _rc{
 		if _rc== 103{
 			display as error "too many variables specified"

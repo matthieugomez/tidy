@@ -2,11 +2,16 @@ program define spread
 	version 12.1
 	syntax varlist, [variable(varname) value(varname) label(string) fast]
 
+
 	if ("`fast'" == "") preserve
 
 	tokenize `varlist'
 	local variable `1'
 	local value `2'
+	if "`value'" == ""{
+		di as error `"The correct syntax is "spread namevariable valuevariable". The valuevariable is missing."'
+		exit 4
+	}
 	qui{
 
 		/* take care of label */
@@ -79,9 +84,9 @@ program define spread
 
 		/* reshape */
 		drop `bylength' `label'
-		cap which fastreshape
+		cap which greshape
 		if _rc == 0{
-			local reshape fastreshape
+			local reshape greshape
 		}
 		else{
 			local reshape reshape
