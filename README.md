@@ -18,7 +18,7 @@ spread transforms a long dataset into a wide dataset (i.e. reshape wide). The co
 
 ## Installation
 ```
-net install tidy, from(https://github.com/matthieugomez/tidy.ado/raw/master/)
+net install tidy, from("https://raw.githubusercontent.com/matthieugomez/tidy.ado/master/")
 ```
 
 If you have a version of Stata < 13, you need to install it manually:
