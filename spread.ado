@@ -95,7 +95,6 @@ program define spread
 
 
 		/* check all new variable names are valid new variable name */
-
 		if "`string'" == ""{
 			local change "no"
 		}
@@ -104,7 +103,6 @@ program define spread
 				local v : word `i' of `variable_levels'
 				cap confirm new variable `v'
 				if _rc{
-					di as error "`value'`v'"
 					local change "no"
 				}
 			}
