@@ -132,13 +132,3 @@ program define spread
 
 	if ("`fast'" == "") cap restore, not
 end
-
-
-
-
-
-
-
-
-
-
