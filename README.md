@@ -6,17 +6,9 @@ This is a basic implementation of the  [tidyr package](https://github.com/hadley
 ## gather
 `gather` transforms a wide dataset into a long dataset (i.e. `reshape long`). The command takes a list of variables as argument. This list corresponds to variables to gather. Use the option `label` to save the variable labels as a new variable.
 
-`gather public private` is equivalent to:
 ```stata
-rename public _1
-rename private _2
-reshape long _, i(country) j(variable) string
-rename _ value
-```
-
-```stata
-. sysuse educ99gdp.dta, clear
-. list in 1/5
+sysuse educ99gdp.dta, clear
+list in 1/5
 
      +------------------------------+
      |   country   public   private |
@@ -28,8 +20,8 @@ rename _ value
   5. |    France       .9        .4 |
      +------------------------------+
 
-. gather public private
-. list in 1/10
+gather public private
+list in 1/10
 
      +------------------------------+
      |   country   variable   value |
@@ -48,20 +40,22 @@ rename _ value
      +------------------------------+
 ```
 
+`gather public private` is equivalent to:
+```stata
+rename public _1
+rename private _2
+reshape long _, i(country) j(variable) string
+rename _ value
+```
+
 
 ## spread
 `spread` transforms a long dataset into a wide dataset (i.e. `reshape wide`). The command takes two variable names as argument. The first variable contains the new variable names. The second variable contains the new variable values.
 
-`spread variable value` is equivalent to:
 ```stata
-reshape wide value, i(country) j(variable) string
-rename value* *
-```
-
-```stata
-. gather public private
-. spread variable value
-. list in 1/5
+gather public private
+spread variable value
+list in 1/5
 
      +------------------------------+
      |   country   private   public |
@@ -74,14 +68,20 @@ rename value* *
      +------------------------------+
 ```
 
+`spread variable value` is equivalent to:
+```stata
+reshape wide value, i(country) j(variable) string
+rename value* *
+```
+
 ## unite
 `unite` pastes together multiple variables into one.
 
 ```stata
-. gen var1 = "a"
-. gen var2 = "b"
-. unite var1 var2, gen(var3)
-. list in 1/3
+gen var1 = "a"
+gen var2 = "b"
+unite var1 var2, gen(var3)
+list in 1/3
 
      +--------------------+
      | var1   var2   var3 |
@@ -93,14 +93,6 @@ rename value* *
 ```
 
 ## Installation
-```
+```stata
 net install tidy, from("https://raw.githubusercontent.com/matthieugomez/tidy.ado/master/")
 ```
-
-If you have a version of Stata < 13, you need to install it manually:
-1. Click the "Download ZIP" button in the right column to download a zipfile. Extract it into a folder (e.g. ~/SOMEFOLDER)
-2. Run: (changing SOMEFOLDER with whatever you picked)
-	```
-	cap ado uninstall tidy
-	net install tidy, from("~/SOMEFOLDER")
-	```
