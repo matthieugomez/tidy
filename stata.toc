@@ -1,5 +1,5 @@
 v 3
-d Matthieu Gomez, Princeton University (mattg@princeton.edu)
+d Matthieu Gomez, Columbia University (mg3901@columbia.edu)
 p tidy TIDY - Stata implementation of the R package tidyr
 
 * l word-to-show path-or-url [description]

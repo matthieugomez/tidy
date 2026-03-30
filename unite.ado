@@ -1,6 +1,6 @@
 program define unite
 	version 12.1
-	syntax varlist, gen(string)  [sep(string)]
+	syntax varlist, gen(string) [sep(string)]
 	confirm new variable `gen'
 
 

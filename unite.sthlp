@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.0  10jul2017}{...}
+{* *! version 1.1.0  30mar2026}{...}
 {viewerjumpto "Syntax" "unite##syntax"}{...}
 {viewerjumpto "Description" "unite##description"}{...}
 {viewerjumpto "Options" "unite##options"}{...}
@@ -22,7 +22,7 @@
 {synoptset 30 tabbed}{...}
 {synopthdr}
 {synoptline}
-{synopt :{opt sep(newvar)}}  Name of the new variable {p_end}
+{synopt :{opt gen(newvar)}}  Name of the new variable {p_end}
 {synopt :{opt sep(string)}}  Separator between variables. Default to _ {p_end}
 {synoptline}
 {p2colreset}{...}
@@ -41,7 +41,7 @@
 Matthieu Gomez
 
 {phang}
-Department of Economics, Princeton University
+Department of Economics, Columbia University
 
 {phang}
 Please report issues on Github

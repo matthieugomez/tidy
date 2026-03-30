@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.0  10jul2017}{...}
+{* *! version 1.1.0  30mar2026}{...}
 {vieweralsosee "reshape" "help reshape"}{...}
 {viewerjumpto "Syntax" "gather##syntax"}{...}
 {viewerjumpto "Description" "gather##description"}{...}
@@ -24,7 +24,7 @@
 {synopthdr}
 {synoptline}
 {synopt :{opt variable(newvar)}} name of new variable corresponding to variable names. Defaults to "variable" {p_end}
-{synopt :{opt value(newvar)}}  name of new variable corresponding to variable values. Defaults to "values" {p_end}
+{synopt :{opt value(newvar)}}  name of new variable corresponding to variable values. Defaults to "value" {p_end}
 {synopt :{opt label(newvar)}} creates a new variable to store the variable labels of {it:varlist} {p_end}
 {synoptline}
 {p2colreset}{...}
@@ -42,7 +42,7 @@
 Matthieu Gomez
 
 {phang}
-Department of Economics, Princeton University
+Department of Economics, Columbia University
 
 {phang}
 Please report issues on Github

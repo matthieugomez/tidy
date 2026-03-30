@@ -1,6 +1,6 @@
 program define spread
 	version 12.1
-	syntax varlist, [variable(varname) value(varname) label(string) fast]
+	syntax varlist, [label(string) fast]
 
 
 	if ("`fast'" == "") preserve
@@ -71,7 +71,7 @@ program define spread
 			}
 		}
 		/* manage when more than 10 id variables */
-		loca ni `:word count `ivar''
+		local ni `:word count `ivar''
 		if `ni' > 10{
 			tempvar id
 			bys `ivar': gen `id' = 1
@@ -87,11 +87,13 @@ program define spread
 		cap which greshape
 		if _rc == 0{
 			local reshape greshape
+			local reshapefast `fast'
 		}
 		else{
 			local reshape reshape
+			local reshapefast
 		}
-		qui `reshape' wide `value', i(`i') j(`variable') `string' `fast'
+		qui `reshape' wide `value', i(`i') j(`variable') `string' `reshapefast'
 
 
 		/* check all new variable names are valid new variable name */

@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.0  10jul2017}{...}
+{* *! version 1.1.0  30mar2026}{...}
 {vieweralsosee "reshape" "help reshape"}{...}
 {viewerjumpto "Syntax" "spread##syntax"}{...}
 {viewerjumpto "Description" "spread##description"}{...}
@@ -40,7 +40,7 @@
 Matthieu Gomez
 
 {phang}
-Department of Economics, Princeton University
+Department of Economics, Columbia University
 
 {phang}
 Please report issues on Github
