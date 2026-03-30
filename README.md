@@ -54,6 +54,18 @@ rename _ value
 
 ```stata
 gather public private
+list in 1/5
+
+     +------------------------------+
+     |   country   variable   value |
+     |------------------------------|
+  1. | Australia     public      .7 |
+  2. |   Britain     public      .7 |
+  3. |    Canada     public     1.5 |
+  4. |   Denmark     public     1.5 |
+  5. |    France     public      .9 |
+     +------------------------------+
+
 spread variable value
 list in 1/5
 
