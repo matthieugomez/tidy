@@ -53,17 +53,16 @@ rename _ value
 `spread` transforms a long dataset into a wide dataset (i.e. `reshape wide`). The command takes two variable names as argument. The first variable contains the new variable names. The second variable contains the new variable values.
 
 ```stata
-gather public private
 list in 1/5
 
      +------------------------------+
      |   country   variable   value |
      |------------------------------|
   1. | Australia     public      .7 |
-  2. |   Britain     public      .7 |
-  3. |    Canada     public     1.5 |
-  4. |   Denmark     public     1.5 |
-  5. |    France     public      .9 |
+  2. | Australia    private      .7 |
+  3. |   Britain     public      .7 |
+  4. |   Britain    private      .4 |
+  5. |    Canada     public     1.5 |
      +------------------------------+
 
 spread variable value
@@ -105,6 +104,12 @@ list in 1/3
 ```
 
 ## Installation
+`tidy` is available on SSC.
 ```stata
-net install tidy, from("https://raw.githubusercontent.com/matthieugomez/tidy.ado/master/")
+ssc install tidy
+```
+
+To install the latest version from Github:
+```stata
+net install tidy, from("https://raw.githubusercontent.com/matthieugomez/stata-tidy/main/")
 ```
