@@ -77,16 +77,17 @@ program define gather
 		local l`i' : variable label `v'
 		rename `v' ____`i'
 	}
-	cap which greshape
-	if _rc == 0{
-		local reshape greshape
-		local reshapefast `fast'
-	}
-	else{
-		local reshape reshape
-		local reshapefast
-	}
-	cap `reshape' long ____, i(`ivar') j(`variable') string `reshapefast'
+	*cap which greshape
+	*if _rc == 0{
+	*	local reshape greshape
+	*	local reshapefast `fast'
+	*}
+	*else{
+		*local reshape reshape
+		*local reshapefast
+	*}
+	*cap `reshape' long ____, i(`ivar') j(`variable') string `reshapefast'
+	cap reshape long ____, i(`ivar') j(`variable') string
 	if _rc{
 		if _rc== 103{
 			display as error "too many variables specified"

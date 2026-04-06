@@ -84,16 +84,17 @@ program define spread
 
 		/* reshape */
 		drop `bylength' `label'
-		cap which greshape
-		if _rc == 0{
-			local reshape greshape
-			local reshapefast `fast'
-		}
-		else{
-			local reshape reshape
-			local reshapefast
-		}
-		qui `reshape' wide `value', i(`i') j(`variable') `string' `reshapefast'
+		*cap which greshape
+		*if _rc == 0{
+		*	local reshape greshape
+		*	local reshapefast `fast' compress
+		*}
+		*else{
+			*local reshape reshape
+			*local reshapefast
+		*}
+		* qui `reshape' wide `value', i(`i') j(`variable') `string' `reshapefast'
+		qui reshape wide `value', i(`i') j(`variable') `string'
 
 
 		/* check all new variable names are valid new variable name */
