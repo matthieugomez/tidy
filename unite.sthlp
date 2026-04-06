@@ -15,7 +15,7 @@
 {marker description}{...}
 {title:Description}
 {pstd}
-{cmd:unite} pastes together a list of variables {varlist} into one. Its goal is similar to the homonym function in the R package tidyr.
+{cmd:unite} pastes together a list of variables {varlist} into one. Numeric variables are converted to readable strings, and date/time display formats are preserved. Its goal is similar to the homonym function in the R package tidyr.
 
 {marker options}{...}
 {title:Options}

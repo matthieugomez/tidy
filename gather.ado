@@ -1,6 +1,6 @@
 program define gather
 	version 12.1
-	syntax varlist, [variable(string) value(string) label(string) fast]
+	syntax varlist(min=1), [variable(name) value(name) label(name) fast]
 
 	if ("`fast'" == "") preserve
 
@@ -19,6 +19,13 @@ program define gather
 	if _rc{
 		di as error "variable `value' already exists. Change default name of new variable with option value()"
 		exit _rc
+	}
+	if "`label'" != ""{
+		cap confirm new variable `label'
+		if _rc{
+			di as error "variable `label' already exists. Change default name of new variable with option label()"
+			exit _rc
+		}
 	}
 
 	qui ds `varlist'
@@ -67,7 +74,7 @@ program define gather
 	}
 	else{
 		tempvar ivar
-		gen `ivar' = 1
+		gen long `ivar' = _n
 	}
 
 
@@ -107,7 +114,7 @@ program define gather
 		tokenize `varlist'
 		local i = 0
 		if "`label'"~=""{
-			gen `label'=""
+			gen str80 `label' = ""
 			order `ivar' `variable' `label' `value'
 			local i = 0
 			foreach name in `varlist'{

@@ -1,6 +1,6 @@
 program define spread
 	version 12.1
-	syntax varlist, [label(string) fast]
+	syntax varlist(min=2 max=2), [label(varname) fast]
 
 
 	if ("`fast'" == "") preserve
@@ -8,16 +8,19 @@ program define spread
 	tokenize `varlist'
 	local variable `1'
 	local value `2'
-	if "`value'" == ""{
-		di as error `"The correct syntax is "spread namevariable valuevariable". The valuevariable is missing."'
-		exit 4
-	}
 	qui{
 
 		/* take care of label */
 		if "`label'" == "" & "`:value label `variable''" ~= ""{
 			tempvar label
 			decode `variable', gen(`label')
+		}
+		else if "`label'" != ""{
+			cap confirm string variable `label'
+			if _rc{
+				display as error "option label() requires a string variable"
+				exit 4
+			}
 		}
 
 		/* create variable`i' and label`i' */
@@ -41,26 +44,28 @@ program define spread
 		local ivar `r(varlist)'
 		if "`ivar'" == ""{
 			tempvar newivar
-			gen `newivar' = _N
+			gen long `newivar' = _N
 			local ivar `newivar'
 		}
 		
 
 
 
-		cap	confirm string variable `variable' 
+		cap confirm string variable `variable' 
 		if _rc{
 			local string ""
+			local change "no"
 		}
 		else{
 			local string string
-			tempvar temp
-			gen `temp' = !regexm(`variable',"^[a-zA-Z_]*[a-zA-Z\_0-9]*$")
-			count if `temp' == 1
-			if `r(N)' > 0 {
-				levelsof `variable' if `temp' == 1
-				display as error `"Some observations for `variable' don't have valid variable names: `=r(levels)'"'
-				exit 4
+			local change "yes"
+			forval j = 1/`n'{
+				local v : word `j' of `variable_levels'
+				cap confirm name `v'
+				if _rc{
+					display as error `"The value `v' for the variable "`variable'" is not a valid Stata variable name"'
+					exit 4
+				}
 			}
 			foreach v in `ivar'{
 				local i : list posof "`v'" in variable_levels
@@ -83,7 +88,22 @@ program define spread
 		}
 
 		/* reshape */
-		drop `bylength' `label'
+		tempvar jvalue value_stub
+		if "`string'" != ""{
+			gen long `jvalue' = .
+			forval j = 1/`n'{
+				local v : word `j' of `variable_levels'
+				replace `jvalue' = `j' if `variable' == `"`v'"'
+			}
+			drop `bylength' `label'
+			drop `variable'
+			rename `value' `value_stub'
+			qui reshape wide `value_stub', i(`i') j(`jvalue')
+		}
+		else{
+			drop `bylength' `label'
+			qui reshape wide `value', i(`i') j(`variable')
+		}
 		*cap which greshape
 		*if _rc == 0{
 		*	local reshape greshape
@@ -94,28 +114,13 @@ program define spread
 			*local reshapefast
 		*}
 		* qui `reshape' wide `value', i(`i') j(`variable') `string' `reshapefast'
-		qui reshape wide `value', i(`i') j(`variable') `string'
 
 
 		/* check all new variable names are valid new variable name */
-		if "`string'" == ""{
-			local change "no"
-		}
-		else{
-			forval i = 1/`n'{
-				local v : word `i' of `variable_levels'
-				cap confirm new variable `v'
-				if _rc{
-					local change "no"
-				}
-			}
-		}
-
-
 		forval i = 1/`n'{
 			local v : word `i' of `variable_levels'
 			if "`change'" != "no"{
-				rename `value'`v' `v'
+				rename `value_stub'`i' `v'
 				local names `names' `v'
 				if "`label'" ~= ""{
 					local l : word `i' of  `label_levels'

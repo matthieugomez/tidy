@@ -17,7 +17,7 @@
 {synoptset 14 tabbed}{...}
 {synopt :{helpb gather}}reshape wide to long{p_end}
 {synopt :{helpb spread}}reshape long to wide{p_end}
-{synopt :{helpb unite}}concatenate multiple string variables{p_end}
+{synopt :{helpb unite}}concatenate multiple variables{p_end}
 {synoptline}
 {p2colreset}{...}
 
